@@ -1,0 +1,68 @@
+/* simpleAdder.sable - A very simple program that recognizes two integers being added. */ 
+Package Lexico ; 
+     
+Helpers 
+    /* Our helpers */
+    all = [0 .. 127];
+    
+    letras = ['a'..'z'] | ['A'..'Z'];
+    digito = ['0'..'9'];
+    space = ' ';
+    cr = 13;
+    lf = 10;
+    tab = 9;
+	eol = cr | lf | cr lf;
+	
+	not_eol = [all - [cr + lf]];
+	not_star = [all - '*'];
+	not_star_slash = [not_star - '/'];
+    
+Tokens 
+    /* Our simple token definition(s). */ 
+    scolon 		= ';';
+    comman 		= ',';
+    lsbrack 	= '[';
+    rsbrack 	= ']';
+    int 		= 'int';
+    char 		= 'char';
+    float 		= 'float';
+    lpar 		= '(';
+    rpar 		= ')';
+    void 		= 'void';
+    lcbrack 	= '{';
+    rcbrack 	= '}';
+    atrib 		= '='; 
+	if 			= 'if';
+	while 		= 'while';
+	for			= 'for';
+	foreach		= 'for each';
+	colon		= ':';
+	return		= 'return';
+	else		= 'else';
+	nint		= 'numint';
+	nreal		= 'numfloat';
+	string		= 'string';
+	lchar		= 'char';
+	new			= 'new';
+	minus 		= '-';
+	plus		= '+';
+	times		= '*';
+	div			= '/';
+	equal		= '==';
+	lequal		= '<=';
+	gequal		= '>=';
+	less		= '<';
+	greater		= '>';
+	not 		= '!';
+	and			= '&&';
+	or			= '||';
+	space 		= (eol | tab | ' ')+;
+	id			= letras (letras | digito)*;
+	numero 		= digito (digito)*;
+	
+	comment = ('//' not_eol* eol) | ('/*' not_star* '*'+ (not_star_slash not_star* '*'+)* '/');
+
+Ignored Tokens
+     space,comment;
+
+    

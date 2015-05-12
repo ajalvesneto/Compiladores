@@ -1,0 +1,6 @@
+int base , altura ;
+int area;
+
+int main(){
+   //comentário de linha
+}
